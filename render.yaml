@@ -1,0 +1,28 @@
+services:
+  # ── Backend: FastAPI ──────────────────────────────────────────────────────
+  - type: web
+    name: airbnb-clone-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true          # Render auto-generates a secure random value
+      - key: CORS_ORIGINS
+        value: https://airbnb-clone-frontend.onrender.com   # update after frontend deploy
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+
+  # ── Frontend: Next.js ─────────────────────────────────────────────────────
+  - type: web
+    name: airbnb-clone-frontend
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npx next start -p $PORT
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://airbnb-clone-backend.onrender.com   # update after backend deploy
