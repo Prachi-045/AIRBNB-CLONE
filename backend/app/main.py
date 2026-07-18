@@ -8,8 +8,10 @@ from .routers.wishlist import router as wishlist_router
 from .routers.reviews import router as reviews_router
 from .auth import router as auth_router
 
-Base.metadata.create_all(bind=engine)
+from .seed import seed_database
 
+Base.metadata.create_all(bind=engine)
+seed_database()
 app = FastAPI(title="Airbnb Clone API", version="0.1.0")
 
 # Allow origins from env var (comma-separated) or fallback to localhost
