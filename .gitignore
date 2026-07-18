@@ -1,0 +1,44 @@
+# ──── Next.js ────
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+
+# ──── Python / Backend ────
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.python/
+.Python/
+backend/.venv/
+.venv/
+venv/
+ENV/
+*.egg-info/
+dist/
+*.egg
+
+# ──── Environment variables ────
+.env
+.env.local
+.env.*.local
+
+# ──── IDEs ────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ──── OS ────
+.DS_Store
+Thumbs.db
+
+# ──── Logs ────
+*.log
+npm-debug.log*
+frontend-startup*.log
